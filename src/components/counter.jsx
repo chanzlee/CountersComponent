@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class Counter extends Component {
   state = {
     count: 0,
-    tags: ["tag1", "tag2", "tag3"]
+    tags: []
     // imageUrl: "https://picsum.photos/200"
   };
 
@@ -12,25 +12,54 @@ class Counter extends Component {
     fontWeight: "bold"
   };
 
+  // constructor() {
+  //   super();
+  //   console.log(this);
+  //   this.handleIncrement = this.handleIncrement.bind(this);
+  // }
+
+  handleIncrement = product => {
+    console.log(product);
+    this.setState({ count: this.state.count + 1 });
+  };
+
+  // doHandleIncrement = () => {
+  //   this.handleIncrement({ id: 1 });
+  // };
+
+  renderTags() {
+    if (this.state.tags.length === 0) return <p>There are no tags!</p>;
+
+    return (
+      <ul>
+        {this.state.tags.map(tag => (
+          <li key={tag}>{tag}</li>
+        ))}
+      </ul>
+    );
+  }
+
   render() {
     return (
-      // <React.Fragment>
-      <div>
-        {/* <img src={this.state.imageUrl} alt="" /> */}
-        {/* <span style={{ fontSize: 30 }}>custom style</span> */}
-        <span style={this.styles} className={this.getBadgeClasses()}>
-          {this.formatCount()}
-        </span>
+      <React.Fragment>
+        <div>
+          {/* <img src={this.state.imageUrl} alt="" /> */}
+          {/* <span style={{ fontSize: 30 }}>custom style</span> */}
+          <span style={this.styles} className={this.getBadgeClasses()}>
+            {this.formatCount()}
+          </span>
 
-        <button className="btn btn-secondary btn-sm">Increment</button>
-
-        <ul>
-          {this.state.tags.map(tag => (
-            <li key={tag}>{tag}</li>
-          ))}
-        </ul>
-      </div>
-      // </React.Fragment>
+          <button
+            onClick={() => this.handleIncrement(product)}
+            className="btn btn-secondary btn-sm"
+          >
+            Increment
+          </button>
+        </div>
+        {this.state.tags.length === 0 && "Please create a new tag"}
+        {this.renderTags()}
+        <div />
+      </React.Fragment>
     );
   }
 
