@@ -27,6 +27,20 @@ class Counter extends Component {
   //   this.handleIncrement({ id: 1 });
   // };
 
+  componentDidUpdate(prevProps, prevState) {
+    console.log("prev props ", prevProps);
+    console.log("prev state ", prevState);
+    if (prevProps.counter.value !== this.props.counter.value) {
+      //ajax call and get new data from the server.
+    }
+  }
+
+  componentWillUnmount() {
+    //component will be unmounted before removed from the dom
+    // This gives oppertunity to clean up memory leaks. (unsubscribe)
+    console.log("Counter - unmount");
+  }
+
   renderTags() {
     if (this.state.tags.length === 0) return <p>There are no tags!</p>;
 
@@ -40,6 +54,7 @@ class Counter extends Component {
   }
 
   render() {
+    console.log("counters rendered");
     return (
       <React.Fragment>
         <div>

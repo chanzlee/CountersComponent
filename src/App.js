@@ -14,6 +14,20 @@ class App extends Component {
     ]
   };
 
+  constructor() {
+    super();
+    //props have to be passed as a argument in order to run below.
+    // this.state.counters = this.props.counters;
+    console.log("App constructor");
+  }
+
+  componentDidMount() {
+    //Ajax call
+    // this.setState({movies})
+
+    console.log("App mounted");
+  }
+
   handleIncrement = counter => {
     const counters = [...this.state.counters];
     const index = counters.indexOf(counter);
@@ -40,6 +54,7 @@ class App extends Component {
   };
 
   render() {
+    console.log("App rendered");
     return (
       <React.Fragment>
         <Navbar
