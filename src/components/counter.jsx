@@ -19,7 +19,6 @@ class Counter extends Component {
   // }
 
   handleIncrement = product => {
-    console.log(product);
     this.setState({ value: this.state.count + 1 });
   };
 
@@ -43,6 +42,7 @@ class Counter extends Component {
     return (
       <React.Fragment>
         <div>
+          {/* {this.props.children} */}
           {/* <img src={this.state.imageUrl} alt="" /> */}
           {/* <span style={{ fontSize: 30 }}>custom style</span> */}
           <span style={this.styles} className={this.getBadgeClasses()}>
@@ -65,13 +65,13 @@ class Counter extends Component {
   // refactor shortcut ctrl+shift+R to extract to method
   getBadgeClasses() {
     let classes = "badge m-2 badge-";
-    classes += this.state.count === 0 ? "warning" : "primary";
+    classes += this.state.value === 0 ? "warning" : "primary";
     return classes;
   }
 
   formatCount() {
-    const { count } = this.state;
-    return count === 0 ? "Zero" : count;
+    const { value } = this.state;
+    return value === 0 ? "Zero" : value;
   }
 }
 
