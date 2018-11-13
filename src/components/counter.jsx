@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class Counter extends Component {
   state = {
-    count: 0,
+    value: this.props.value,
     tags: []
     // imageUrl: "https://picsum.photos/200"
   };
@@ -20,7 +20,7 @@ class Counter extends Component {
 
   handleIncrement = product => {
     console.log(product);
-    this.setState({ count: this.state.count + 1 });
+    this.setState({ value: this.state.count + 1 });
   };
 
   // doHandleIncrement = () => {
@@ -50,15 +50,14 @@ class Counter extends Component {
           </span>
 
           <button
-            onClick={() => this.handleIncrement(product)}
-            className="btn btn-secondary btn-sm"
+            onClick={() => this.handleIncrement({ id: 1 })}
+            className="btn btn-secondary btn-sm m-3"
           >
             Increment
           </button>
         </div>
-        {this.state.tags.length === 0 && "Please create a new tag"}
-        {this.renderTags()}
-        <div />
+        {/* {this.state.tags.length === 0 && "Please create a new tag"}
+        {this.renderTags()} */}
       </React.Fragment>
     );
   }
