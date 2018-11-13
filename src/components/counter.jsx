@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class Counter extends Component {
   state = {
-    value: this.props.value,
+    value: this.props.counter.value,
     tags: []
     // imageUrl: "https://picsum.photos/200"
   };
@@ -18,8 +18,9 @@ class Counter extends Component {
   //   this.handleIncrement = this.handleIncrement.bind(this);
   // }
 
-  handleIncrement = product => {
-    this.setState({ value: this.state.count + 1 });
+  handleIncrement = () => {
+    console.log("inc");
+    this.setState({ value: this.state.value + 1 });
   };
 
   // doHandleIncrement = () => {
@@ -50,10 +51,16 @@ class Counter extends Component {
           </span>
 
           <button
-            onClick={() => this.handleIncrement({ id: 1 })}
+            onClick={this.handleIncrement}
             className="btn btn-secondary btn-sm m-3"
           >
             Increment
+          </button>
+          <button
+            onClick={() => this.props.onDelete(this.props.counter.id)}
+            className="btn btn-danger btn-sm m-2"
+          >
+            Delete
           </button>
         </div>
         {/* {this.state.tags.length === 0 && "Please create a new tag"}
